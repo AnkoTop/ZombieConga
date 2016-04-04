@@ -8,13 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		A43860951CB1A93E00F11B54 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43860941CB1A93E00F11B54 /* AppDelegate.swift */; };
-		A43860971CB1A93E00F11B54 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A43860961CB1A93E00F11B54 /* GameScene.sks */; };
 		A43860991CB1A93E00F11B54 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43860981CB1A93E00F11B54 /* GameScene.swift */; };
 		A438609B1CB1A93E00F11B54 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A438609A1CB1A93E00F11B54 /* GameViewController.swift */; };
 		A438609E1CB1A93E00F11B54 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A438609C1CB1A93E00F11B54 /* Main.storyboard */; };
 		A43860A01CB1A93E00F11B54 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A438609F1CB1A93E00F11B54 /* Assets.xcassets */; };
 		A43860A31CB1A93E00F11B54 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A43860A11CB1A93E00F11B54 /* LaunchScreen.storyboard */; };
 		A43860AE1CB1A93E00F11B54 /* ZombieCongaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43860AD1CB1A93E00F11B54 /* ZombieCongaTests.swift */; };
+		A44CAE841CB24C81000ED44D /* MyUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44CAE831CB24C81000ED44D /* MyUtils.swift */; };
+		A44CAE861CB25095000ED44D /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = A44CAE851CB25095000ED44D /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,7 +31,6 @@
 /* Begin PBXFileReference section */
 		A43860911CB1A93E00F11B54 /* ZombieConga.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZombieConga.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A43860941CB1A93E00F11B54 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A43860961CB1A93E00F11B54 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		A43860981CB1A93E00F11B54 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		A438609A1CB1A93E00F11B54 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		A438609D1CB1A93E00F11B54 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -40,6 +40,8 @@
 		A43860A91CB1A93E00F11B54 /* ZombieCongaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZombieCongaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A43860AD1CB1A93E00F11B54 /* ZombieCongaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZombieCongaTests.swift; sourceTree = "<group>"; };
 		A43860AF1CB1A93E00F11B54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A44CAE831CB24C81000ED44D /* MyUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyUtils.swift; sourceTree = "<group>"; };
+		A44CAE851CB25095000ED44D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 		A43860881CB1A93E00F11B54 = {
 			isa = PBXGroup;
 			children = (
+				A44CAE851CB25095000ED44D /* README.md */,
 				A43860931CB1A93E00F11B54 /* ZombieConga */,
 				A43860AC1CB1A93E00F11B54 /* ZombieCongaTests */,
 				A43860921CB1A93E00F11B54 /* Products */,
@@ -82,13 +85,13 @@
 			isa = PBXGroup;
 			children = (
 				A43860941CB1A93E00F11B54 /* AppDelegate.swift */,
-				A43860961CB1A93E00F11B54 /* GameScene.sks */,
 				A43860981CB1A93E00F11B54 /* GameScene.swift */,
 				A438609A1CB1A93E00F11B54 /* GameViewController.swift */,
 				A438609C1CB1A93E00F11B54 /* Main.storyboard */,
 				A438609F1CB1A93E00F11B54 /* Assets.xcassets */,
 				A43860A11CB1A93E00F11B54 /* LaunchScreen.storyboard */,
 				A43860A41CB1A93E00F11B54 /* Info.plist */,
+				A44CAE831CB24C81000ED44D /* MyUtils.swift */,
 			);
 			path = ZombieConga;
 			sourceTree = "<group>";
@@ -183,7 +186,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A43860971CB1A93E00F11B54 /* GameScene.sks in Resources */,
 				A43860A31CB1A93E00F11B54 /* LaunchScreen.storyboard in Resources */,
 				A43860A01CB1A93E00F11B54 /* Assets.xcassets in Resources */,
 				A438609E1CB1A93E00F11B54 /* Main.storyboard in Resources */,
@@ -206,7 +208,9 @@
 			files = (
 				A43860991CB1A93E00F11B54 /* GameScene.swift in Sources */,
 				A438609B1CB1A93E00F11B54 /* GameViewController.swift in Sources */,
+				A44CAE861CB25095000ED44D /* README.md in Sources */,
 				A43860951CB1A93E00F11B54 /* AppDelegate.swift in Sources */,
+				A44CAE841CB24C81000ED44D /* MyUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,6 +403,7 @@
 				A43860B41CB1A93E00F11B54 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A43860B51CB1A93E00F11B54 /* Build configuration list for PBXNativeTarget "ZombieCongaTests" */ = {
 			isa = XCConfigurationList;
@@ -407,6 +412,7 @@
 				A43860B71CB1A93E00F11B54 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
