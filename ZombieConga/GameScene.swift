@@ -16,6 +16,7 @@ class GameScene: SKScene {
     var dt: NSTimeInterval = 0
     let zombieMovePointsPerSec: CGFloat = 480.0
     let zombieRotateRadiansPerSec:CGFloat = 4.0 * π
+    var zombieIsInvincible = false
     var velocity = CGPoint.zero
     let playableRect: CGRect
     let zombieAnimation: SKAction
@@ -319,9 +320,24 @@ class GameScene: SKScene {
     }
     
     func zombieHitEnemy(enemy: SKSpriteNode) {
-        enemy.removeFromParent()
+        zombieIsInvincible = true
+        //enemy.removeFromParent()
         //runAction(SKAction.playSoundFileNamed("hitCatLady.wav", waitForCompletion: false))
         runAction(enemyCollisionSound)
+
+        let blinkTimes = 10.0
+        let duration = 3.0
+        let blinkAction = SKAction.customActionWithDuration(duration) {
+            node, elapsedTime in
+            let slice = duration / blinkTimes
+            let remainder = Double(elapsedTime) % slice
+            node.hidden = remainder > slice / 2
+        }
+        runAction(blinkAction) { void in
+            self.zombie.hidden = false
+            self.zombieIsInvincible = false
+            
+        }
     }
     
     func checkCollisions() {
@@ -335,16 +351,19 @@ class GameScene: SKScene {
         for cat in hitCats {
             zombieHitCat(cat)
         }
+        
         var hitEnemies: [SKSpriteNode] = []
-        enumerateChildNodesWithName("enemy") { node, _ in
-            let enemy = node as! SKSpriteNode
-            if CGRectIntersectsRect(
-                CGRectInset(node.frame, 20, 20), self.zombie.frame) {
-                hitEnemies.append(enemy)
+        if !zombieIsInvincible {
+            enumerateChildNodesWithName("enemy") { node, _ in
+                let enemy = node as! SKSpriteNode
+                if CGRectIntersectsRect(
+                    CGRectInset(node.frame, 20, 20), self.zombie.frame) {
+                    hitEnemies.append(enemy)
+                }
             }
-        }
-        for enemy in hitEnemies {
-            zombieHitEnemy(enemy)
+            for enemy in hitEnemies {
+                zombieHitEnemy(enemy)
+            }
         }
     }
     
