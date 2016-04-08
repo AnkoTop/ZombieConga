@@ -17,6 +17,7 @@ class GameScene: SKScene {
     let zombieMovePointsPerSec: CGFloat = 480.0
     let zombieRotateRadiansPerSec:CGFloat = 4.0 * π
     var zombieIsInvincible = false
+    let trainCatMovePointsPerSec: CGFloat = 480.0
     var velocity = CGPoint.zero
     let playableRect: CGRect
     let zombieAnimation: SKAction
@@ -65,6 +66,8 @@ class GameScene: SKScene {
         
         // #2: The Zombie
         zombie.position = CGPoint(x: 400, y: 400)
+        zombie.zPosition =  100 // make sure zombie's on top...
+    
         addChild(zombie)
         // animate the walk
         //zombie.runAction(SKAction.repeatActionForever(zombieAnimation))
@@ -107,8 +110,10 @@ class GameScene: SKScene {
         }
         
         
-        // Doing it her is the wrong place: it will always be 1 frame behind!
+        // Doing it here is the wrong place: it will always be 1 frame behind!
         //checkCollisions()
+        
+        moveTrain()
     }
     
     
@@ -314,9 +319,18 @@ class GameScene: SKScene {
     
     
     func zombieHitCat(cat: SKSpriteNode) {
-        cat.removeFromParent()
         //runAction(SKAction.playSoundFileNamed("hitCat.wav", waitForCompletion: false))
         runAction(catCollisionSound)
+        
+        //Challenge 3: let the cat join the train
+        //cat.removeFromParent()
+        cat.name = "train"
+        cat.removeAllActions()
+        cat.setScale(CGFloat(1.0))
+        cat.zRotation = CGFloat(0)
+        let turnGreen = SKAction.colorizeWithColor(SKColor.greenColor(), colorBlendFactor: 1.0, duration: 0.2)
+        cat.runAction(turnGreen)
+        
     }
     
     func zombieHitEnemy(enemy: SKSpriteNode) {
@@ -365,6 +379,24 @@ class GameScene: SKScene {
                 zombieHitEnemy(enemy)
             }
         }
+    }
+    
+    func moveTrain() {
+        var targetPosition = zombie.position
+        enumerateChildNodesWithName("train") {
+            node, _ in
+            if !node.hasActions() {
+                let actionDuration = 0.3
+                let offset = targetPosition - node.position
+                let direction = offset.normalized()
+                let amountToMovePerSec = direction * self.trainCatMovePointsPerSec
+                let amountToMove = amountToMovePerSec * CGFloat(actionDuration)
+                let moveAction = SKAction.moveByX(amountToMove.x, y: amountToMove.y, duration: actionDuration)
+                node.runAction(moveAction)
+            }
+            targetPosition = node.position
+        }
+        
     }
     
     
