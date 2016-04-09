@@ -12,11 +12,11 @@ class GameScene: SKScene {
     
     
     let zombie = SKSpriteNode(imageNamed: "zombie1")
-    var lastUpdateTime: NSTimeInterval = 0
-    var dt: NSTimeInterval = 0
     let zombieMovePointsPerSec: CGFloat = 480.0
     let zombieRotateRadiansPerSec:CGFloat = 4.0 * π
     var zombieIsInvincible = false
+    var zombieLives = 5
+    
     let trainCatMovePointsPerSec: CGFloat = 480.0
     var velocity = CGPoint.zero
     let playableRect: CGRect
@@ -24,8 +24,11 @@ class GameScene: SKScene {
     let catCollisionSound: SKAction = SKAction.playSoundFileNamed("hitCat.wav", waitForCompletion: false)
     let enemyCollisionSound: SKAction = SKAction.playSoundFileNamed("hitCatLady.wav", waitForCompletion: false)
     
-    var lastTouchedLocation : CGPoint?
     
+    var lastUpdateTime: NSTimeInterval = 0
+    var dt: NSTimeInterval = 0
+    var lastTouchedLocation : CGPoint?
+    var gameOver = false
     
     override init(size: CGSize) {
         let maxAspectRatio:CGFloat = 16.0/9.0 // 1
@@ -114,6 +117,11 @@ class GameScene: SKScene {
         //checkCollisions()
         
         moveTrain()
+        
+        if zombieLives <= 0 {
+            gameOver = true
+            print ("You Lose: L!!!")
+        }
     }
     
     
@@ -292,7 +300,32 @@ class GameScene: SKScene {
         cat.runAction(SKAction.sequence(actions))
     }
     
-    
+    func loseCats() {
+        // 1
+        var loseCount = 0
+        enumerateChildNodesWithName("train") { node, stop in
+            // 2
+            var randomSpot = node.position
+            randomSpot.x += CGFloat.random(min: -100, max: 100)
+            randomSpot.y += CGFloat.random(min: -100, max: 100)
+            // 3
+            node.name = ""
+            node.runAction(
+                SKAction.sequence([
+                    SKAction.group([
+                        SKAction.rotateByAngle(π*4, duration: 1.0),
+                        SKAction.moveTo(randomSpot, duration: 1.0),
+                        SKAction.scaleTo(0, duration: 1.0)
+                        ]),
+                    SKAction.removeFromParent()
+                    ]))
+                    // 4
+                    loseCount += 1
+                    if loseCount >= 2 {
+                    stop.memory = true
+            }
+        }
+    }
     
     
     func sceneTouched(touchLocation:CGPoint) {
@@ -338,6 +371,8 @@ class GameScene: SKScene {
         //enemy.removeFromParent()
         //runAction(SKAction.playSoundFileNamed("hitCatLady.wav", waitForCompletion: false))
         runAction(enemyCollisionSound)
+        loseCats()
+        zombieLives -= 1
 
         let blinkTimes = 10.0
         let duration = 3.0
@@ -382,9 +417,11 @@ class GameScene: SKScene {
     }
     
     func moveTrain() {
+        var trainCount = 0
         var targetPosition = zombie.position
         enumerateChildNodesWithName("train") {
             node, _ in
+            trainCount += 1
             if !node.hasActions() {
                 let actionDuration = 0.3
                 let offset = targetPosition - node.position
@@ -395,6 +432,10 @@ class GameScene: SKScene {
                 node.runAction(moveAction)
             }
             targetPosition = node.position
+        }
+        if trainCount >= 15 {
+            gameOver = true
+            print ("You WIN !!! Yeahhhh!")
         }
         
     }

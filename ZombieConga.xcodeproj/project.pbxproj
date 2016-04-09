@@ -14,6 +14,7 @@
 		A43860A01CB1A93E00F11B54 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A438609F1CB1A93E00F11B54 /* Assets.xcassets */; };
 		A43860A31CB1A93E00F11B54 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A43860A11CB1A93E00F11B54 /* LaunchScreen.storyboard */; };
 		A43860AE1CB1A93E00F11B54 /* ZombieCongaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43860AD1CB1A93E00F11B54 /* ZombieCongaTests.swift */; };
+		A43B99C61CB84F2400D386D2 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43B99C51CB84F2400D386D2 /* GameOverScene.swift */; };
 		A44CAE841CB24C81000ED44D /* MyUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44CAE831CB24C81000ED44D /* MyUtils.swift */; };
 		A44CAE861CB25095000ED44D /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = A44CAE851CB25095000ED44D /* README.md */; };
 		A44CAE8D1CB45394000ED44D /* backgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A44CAE881CB45394000ED44D /* backgroundMusic.mp3 */; };
@@ -45,6 +46,7 @@
 		A43860A91CB1A93E00F11B54 /* ZombieCongaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZombieCongaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A43860AD1CB1A93E00F11B54 /* ZombieCongaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZombieCongaTests.swift; sourceTree = "<group>"; };
 		A43860AF1CB1A93E00F11B54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A43B99C51CB84F2400D386D2 /* GameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		A44CAE831CB24C81000ED44D /* MyUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyUtils.swift; sourceTree = "<group>"; };
 		A44CAE851CB25095000ED44D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A44CAE881CB45394000ED44D /* backgroundMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = backgroundMusic.mp3; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				A43860A11CB1A93E00F11B54 /* LaunchScreen.storyboard */,
 				A43860A41CB1A93E00F11B54 /* Info.plist */,
 				A44CAE831CB24C81000ED44D /* MyUtils.swift */,
+				A43B99C51CB84F2400D386D2 /* GameOverScene.swift */,
 			);
 			path = ZombieConga;
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 				A438609B1CB1A93E00F11B54 /* GameViewController.swift in Sources */,
 				A44CAE861CB25095000ED44D /* README.md in Sources */,
 				A43860951CB1A93E00F11B54 /* AppDelegate.swift in Sources */,
+				A43B99C61CB84F2400D386D2 /* GameOverScene.swift in Sources */,
 				A44CAE841CB24C81000ED44D /* MyUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
