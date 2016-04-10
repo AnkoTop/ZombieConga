@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreGraphics
+import AVFoundation
 
 
 // Helper calculations on CGPoints
@@ -117,5 +118,25 @@ extension CGFloat {
     static func random(min min: CGFloat, max: CGFloat) -> CGFloat {
         assert(min < max)
         return CGFloat.random() * (max - min) + min
+    }
+}
+
+var backgroundMusicPlayer: AVAudioPlayer!
+
+func playBackgroundMusic(filename: String) {
+    let resourceUrl = NSBundle.mainBundle().URLForResource(
+        filename, withExtension: nil)
+    guard let url = resourceUrl else {
+        print("Could not find file: \(filename)")
+        return
+    }
+    do {
+        try backgroundMusicPlayer = AVAudioPlayer(contentsOfURL: url)
+        backgroundMusicPlayer.numberOfLoops = -1
+        backgroundMusicPlayer.prepareToPlay()
+        backgroundMusicPlayer.play()
+    } catch {
+        print("Could not create audio player!")
+        return
     }
 }
