@@ -1,4 +1,4 @@
-# ToDo
+# ZombieConga
 
 Simple Zombie 2d game
 
